@@ -3,8 +3,8 @@ const fixture = {
     '### Models', '---'
   ],
   tableHeader: [
-    '| Name | Type | Description | Required |',
-    '| ---- | ---- | ----------- | -------- |'
+    '| Name | Type | Description | Example | Flags |',
+    '| ---- | ---- | ----------- | ------- | ----- |'
   ],
   data1: {
     Tag: {
@@ -21,8 +21,8 @@ const fixture = {
     }
   },
   result1: [
-    '| id | long |  | No |',
-    '| name | string |  | No |'
+    '| id | long |  |  |  |',
+    '| name | string |  |  |  |'
   ],
   data2: {
     Pet: {
@@ -53,20 +53,21 @@ const fixture = {
     }
   },
   result2: [
-    '| category | [Category](#category) |  | No |',
-    '| name | string | pet category in the store | Yes |',
-    '| photoUrls | [ string ] |  | Yes |',
-    '| tags | [ [Category](#category) ] |  | No |'
+    '| category | [Category](#category) |  |  |  |',
+    '| name | string | pet category in the store | doggie | Required |',
+    '| photoUrls | [ string ] |  |  | Required |',
+    '| tags | [ [Category](#category) ] |  |  |  |'
   ],
   data3: {
     deviceid: {
       type: 'integer',
       format: 'int32',
-      description: 'DeviceID'
+      description: 'DeviceID',
+      example: 'iPhone'
     }
   },
   result3: [
-    '| deviceid | integer | DeviceID |  |'
+    '| deviceid | integer | DeviceID | iPhone |  |'
   ]
 };
 fixture.defHeader1 = '### Tag  ';

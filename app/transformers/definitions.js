@@ -14,8 +14,9 @@ const parseProperties = (name, definition) => {
     const prop = definition.properties[propName];
     const typeCell = dataTypeTransformer(new Schema(prop));
     const descriptionCell = 'description' in prop ? prop.description : '';
-    const requiredCell = inArray(propName, required) ? 'Yes' : 'No';
-    res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
+    const exampleCell = 'example' in prop ? prop.example : '';
+    const requiredCell = inArray(propName, required) ? 'Required' : '';
+    res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${exampleCell} | ${requiredCell} |`);
   });
   return res;
 };
@@ -29,8 +30,9 @@ const parsePrimitive = (name, definition) => {
   const res = [];
   const typeCell = 'type' in definition ? definition.type : '';
   const descriptionCell = 'description' in definition ? definition.description : '';
+  const exampleCell = 'example' in definition ? definition.example : '';
   const requiredCell = '';
-  res.push(`| ${name} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
+  res.push(`| ${name} | ${typeCell} | ${descriptionCell} | ${exampleCell} | ${requiredCell} |`);
   return res;
 };
 
@@ -49,8 +51,8 @@ const processDefinition = (name, definition) => {
     res.push(definition.description);
     res.push('');
   }
-  res.push('| Name | Type | Description | Required |');
-  res.push('| ---- | ---- | ----------- | -------- |');
+  res.push('| Name | Type | Description | Example | Flags |');
+  res.push('| ---- | ---- | ----------- | ------- | ----- |');
 
   if ('properties' in definition) {
     parsedDef = parseProperties(name, definition);
