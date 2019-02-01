@@ -1,5 +1,4 @@
 const dataTypeTransformer = require('./dataTypes');
-const inArray = require('../lib/inArray');
 const Schema = require('../models/schema');
 
 /**
@@ -8,15 +7,13 @@ const Schema = require('../models/schema');
  * @param definition definition object
  */
 const parseProperties = (name, definition) => {
-  const required = 'required' in definition ? definition.required : [];
   const res = [];
   Object.keys(definition.properties).map(propName => {
     const prop = definition.properties[propName];
     const typeCell = dataTypeTransformer(new Schema(prop));
     const descriptionCell = 'description' in prop ? prop.description : '';
     const exampleCell = 'example' in prop ? prop.example : '';
-    const requiredCell = inArray(propName, required) ? 'Required' : '';
-    res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${exampleCell} | ${requiredCell} |`);
+    res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${exampleCell} |`);
   });
   return res;
 };
@@ -31,8 +28,7 @@ const parsePrimitive = (name, definition) => {
   const typeCell = 'type' in definition ? definition.type : '';
   const descriptionCell = 'description' in definition ? definition.description : '';
   const exampleCell = 'example' in definition ? definition.example : '';
-  const requiredCell = '';
-  res.push(`| ${name} | ${typeCell} | ${descriptionCell} | ${exampleCell} | ${requiredCell} |`);
+  res.push(`| ${name} | ${typeCell} | ${descriptionCell} | ${exampleCell} |`);
   return res;
 };
 
@@ -51,8 +47,8 @@ const processDefinition = (name, definition) => {
     res.push(definition.description);
     res.push('');
   }
-  res.push('| Name | Type | Description | Example | Flags |');
-  res.push('| ---- | ---- | ----------- | ------- | ----- |');
+  res.push('| Name | Type | Description | Example |');
+  res.push('| ---- | ---- | ----------- | ------- |');
 
   if ('properties' in definition) {
     parsedDef = parseProperties(name, definition);

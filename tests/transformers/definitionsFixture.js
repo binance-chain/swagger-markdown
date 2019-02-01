@@ -3,8 +3,8 @@ const fixture = {
     '### Models', '---'
   ],
   tableHeader: [
-    '| Name | Type | Description | Example | Flags |',
-    '| ---- | ---- | ----------- | ------- | ----- |'
+    '| Name | Type | Description | Example |',
+    '| ---- | ---- | ----------- | ------- |'
   ],
   data1: {
     Tag: {
@@ -21,8 +21,8 @@ const fixture = {
     }
   },
   result1: [
-    '| id | long |  |  |  |',
-    '| name | string |  |  |  |'
+    '| id | long |  |  |',
+    '| name | string |  |  |'
   ],
   data2: {
     Pet: {
@@ -53,10 +53,10 @@ const fixture = {
     }
   },
   result2: [
-    '| category | [Category](#category) |  |  |  |',
-    '| name | string | pet category in the store | doggie | Required |',
-    '| photoUrls | [ string ] |  |  | Required |',
-    '| tags | [ [Category](#category) ] |  |  |  |'
+    '| category | [Category](#category) |  |  |',
+    '| name | string | pet category in the store | doggie |',
+    '| photoUrls | [ string ] |  |  |',
+    '| tags | [ [Category](#category) ] |  |  |'
   ],
   data3: {
     deviceid: {
@@ -67,7 +67,7 @@ const fixture = {
     }
   },
   result3: [
-    '| deviceid | integer | DeviceID | iPhone |  |'
+    '| deviceid | integer | DeviceID | iPhone |'
   ]
 };
 fixture.defHeader1 = '### Tag  ';
